@@ -2,7 +2,8 @@
 	include 'simple_html_dom.php';
 	$uni_URL = 'http://www.unipordenone.it';
 	$calendar_path = '/mrbs/day.php';
-
+	$search_descr = 'TSAC2';
+	
 	function GetHTMLCalendar($day, $month, $year, $area){
 		global $uni_URL, $calendar_path;
 		$post_array = array();
@@ -59,7 +60,7 @@
 		$aroom = -1;
 
 		foreach ($el->find('tr') as $row ) {
-			if (strpos($row->innertext, 'TSAC') !== false)
+			if (strpos($row->innertext, $search_descr) !== false)
     			array_push($rows, $row);
 		}
 
@@ -70,7 +71,7 @@
 					//echo "<hr>";
 					if($col->colspan != null){
 						//echo "Element: </br>" . $col;
-						if(strpos($col->innertext, 'TSAC') != false){
+						if(strpos($col->innertext, $search_descr) != false){
 
 							$item = array();
 							$item["room"] = $aroom;
