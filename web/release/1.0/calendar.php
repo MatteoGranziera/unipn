@@ -3,9 +3,9 @@
 	$uni_URL = 'http://www.unipordenone.it';
 	$calendar_path = '/mrbs/day.php';
 	$search_descr = 'TSAC2';
-	
+
 	function GetHTMLCalendar($day, $month, $year, $area){
-		global $uni_URL, $calendar_path;
+		global $uni_URL, $calendar_path, $search_descr;
 		$post_array = array();
 
 		if($day != null)
@@ -47,6 +47,7 @@
 	}
 
 	function GetInformations($day, $month, $year, $area){
+		global $search_descr;
 		$hrtml = GetHTMLCalendar($day, $month, $year, $area);
 		$el = $hrtml->find('table[id=timetable]', 0);
 		$es = $el;
